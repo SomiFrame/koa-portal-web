@@ -4,12 +4,7 @@
             <div class="md-layout-item md-size-30 text-left">logo is here</div>
             <div class="md-layout-item md-layout md-alignment-center-right">
                 <div class="md-layout-itme">
-                    <md-content @click="showSearch" :class="[ searchActive ?'active':'']" class="md-icon-button inline-flex md-raised md-accent button-search">
-                        <md-icon>search</md-icon>
-                    </md-content>
-                    <md-button class="clear" @click="hideSearch" >
-                        <md-icon >clear</md-icon>
-                    </md-button>
+                    <Search />
                 </div>
             </div>
         </div>
@@ -17,6 +12,7 @@
 </template>
 
 <script>
+import Search from './Search.vue'
 export default {
     name: "Header",
     data() {
@@ -31,7 +27,10 @@ export default {
         hideSearch() {
             this.searchActive = false
         }
-    }
+    },
+    components:{
+        Search
+   }
 }
 </script>
 
@@ -53,13 +52,18 @@ export default {
     }
     .md-content.md-icon-button {
         transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        transition-delay: .7s;
+        i {
+        }
         &.active {
+            transition-delay: 0s;
             transform: scale(70);
             &+ .md-button.clear {
                color: #fff;
-              transform: scale(2) rotate(0);
+                  transform: scale(2) rotate(0);
             }
             i {
+                transition-delay: .7s;
                transform: scale(0);
             }
         }
