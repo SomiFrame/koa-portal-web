@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Header/>
     <div class="container">
         <router-view/>
     </div>
@@ -26,7 +25,7 @@
 @import '~vue-material/dist/theme/engine';
 
 @include md-register-theme("default", (
-    primary: md-get-palette-color(green, A200), // The primary color of your application
+    primary: md-get-palette-color(blue, A200), // The primary color of your application
     accent: md-get-palette-color(pink, 500) // The accent or secondary color
 ));
 

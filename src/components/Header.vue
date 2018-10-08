@@ -1,10 +1,10 @@
 <template>
     <div class="header">
         <div class="md-layout md-gutter md-alignment-center-right">
-            <div class="md-layout-item md-size-30 text-left">logo is here</div>
+            <div class="md-layout-item md-size-30 text-left">Sili Video</div>
             <div class="md-layout-item md-layout md-alignment-center-right">
-                <div class="md-layout-itme">
-                    <Search />
+                <div class="md-layout-item">
+                    <Search class="search-container"/>
                 </div>
             </div>
         </div>
@@ -50,29 +50,5 @@ export default {
            }
         }
     }
-    .md-content.md-icon-button {
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        transition-delay: .7s;
-        i {
-        }
-        &.active {
-            transition-delay: 0s;
-            transform: scale(70);
-            &+ .md-button.clear {
-               color: #fff;
-                  transform: scale(2) rotate(0);
-            }
-            i {
-                transition-delay: .7s;
-               transform: scale(0);
-            }
-        }
-        &+ .md-button.clear {
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            color: #fff;
-            transform: scale(0) rotate(180deg);
-        }
-    }
 }
-
 </style>

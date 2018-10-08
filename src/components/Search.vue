@@ -1,31 +1,33 @@
 <template>
 <div class="search-wrapper">
     <form>
-        <input placeholder="search" />
-        <span class="search-icon"></span>
+        <md-autocomplete v-model="content"
+            :md-options="recommends"
+            md-layout="box"
+            md-dense>
+            <label>Search</label>
+        </md-autocomplete>
     </form>
 </div>
 </template>
 <script>
 export default {
-    data() {
-        return {
-
-        }
-    }
-}
+  data() {
+    return {
+        content:'',
+        recommends: []
+    };
+  }
+};
 </script>
 <style lang="scss" scoped>
 .search-wrapper {
-    form {
-        position: relative;
-        width: 50px;
-        height: 50px;
-        input {
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-        }
-    }
+    width: 100%;
+    height: 100%;
+  form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
