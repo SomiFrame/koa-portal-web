@@ -1,29 +1,40 @@
 <template>
   <div class="page-container">
-    <md-app md-waterfall md-mode="flexible">
-      <md-app-toolbar class="md-large md-primary">
+    <md-app md-mode="reveal">
+      <md-app-toolbar v-if="!searchVisible" class="md-primary">
         <div class="md-toolbar-row">
           <div class="md-toolbar-section-start">
             <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
               <md-icon>menu</md-icon>
             </md-button>
+            <span class="md-display-1">Title</span>
           </div>
           <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button">
-              <md-icon>more_vert</md-icon>
+            <md-button v-if="!searchVisible" @click="searchVisible=!searchVisible" class="md-icon-button">
+              <md-icon>search</md-icon>
             </md-button>
           </div>
         </div>
-
-        <div class="md-toolbar-row md-toolbar-offset">
-          <span class="md-display-1">Title</span>
-        </div>
       </md-app-toolbar>
-
+      <md-app-toolbar v-if="searchVisible" class="">
+        <div class="md-toolbar-row">
+            <form class="search-form">
+              <md-field>
+                <label>search something</label>
+                <md-input v-model="search_content"></md-input>
+              </md-field>
+            </form>
+            <md-button @click="searchVisible=!searchVisible" class="md-icon-button">
+              <md-icon>clear</md-icon>
+            </md-button>
+        </div> 
+      </md-app-toolbar>
+      <md-drawer md-right :md-active.sync="searchVisible">
+        <md-toolbar class="md-transparent" md-elevation="0"></md-toolbar>
+      </md-drawer>
       <md-app-drawer :md-active.sync="menuVisible">
         <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-
-        <md-list>
+        <!-- <md-list>
           <md-list-item>
             <md-icon>move_to_inbox</md-icon>
             <span class="md-list-item-text">Inbox</span>
@@ -43,7 +54,7 @@
             <md-icon>error</md-icon>
             <span class="md-list-item-text">Spam</span>
           </md-list-item>
-        </md-list>
+        </md-list> -->
       </md-app-drawer>
 
       <md-app-content>
@@ -60,7 +71,9 @@ export default {
   name: "home",
   data: () => {
     return {
-      menuVisible: false
+      menuVisible: false,
+      searchVisible: false,
+      search_content: ""
     };
   },
   components: {
@@ -74,7 +87,8 @@ export default {
   height: 100vh;
   border: 1px solid rgba(#000, 0.12);
 }
-.md-app-toolbar {
-  height: 196px;
+.search-form {
+  width: 100%;
+  height: 100%;
 }
 </style>
