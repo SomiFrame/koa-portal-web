@@ -1,6 +1,7 @@
 import axios from 'axios'
 import jsCookie from 'js-cookie'
 const api_url = process.env.VUE_APP_API_URL
+console.log(api_url)
 const instance = axios.create({
     baseURL: api_url,
     timeout: 3000

@@ -58,7 +58,7 @@
       </md-app-drawer>
 
       <md-app-content>
-        <Card />
+        <Card :list="list"/>
       </md-app-content>
     </md-app>
   </div>
@@ -73,12 +73,24 @@ export default {
     return {
       menuVisible: false,
       searchVisible: false,
-      search_content: ""
+      search_content: "",
+      page: 1,
+      limit: 20,
+      list:[]
     };
   },
   components: {
     Card
+  },
+  created(){
+    const {page,limit} = this
+      this.axios.get('/videos',{params:{page,limit}}).then(res=>{
+        console.log(res)
+        const {data} = res.data
+        this.list = data.data
+      })
   }
+
 };
 </script>
 
