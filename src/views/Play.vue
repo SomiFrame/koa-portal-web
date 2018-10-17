@@ -1,12 +1,20 @@
 <template>
-    <div>
-        <iframe
-        frameborder="0"
-        border="0"
-        scrolling=no
-        allowfullscreen=allowfullscreen
-        :src="data.ref_video_path"></iframe>
-    </div>
+    <v-container class="pa-0" >
+        <v-subheader
+            >
+              {{ data.title }}
+            </v-subheader>
+        <v-responsive :aspect-ratio="16/9">
+            <v-card-text class="pa-0">
+                <iframe
+                frameborder="0"
+                border="0"
+                scrolling=no
+                allowfullscreen=allowfullscreen
+                :src="data.ref_video_path"></iframe>
+            </v-card-text>
+        </v-responsive>
+    </v-container>
 </template>
 <script>
 export default {
@@ -29,8 +37,11 @@ export default {
 }
 </script>
 <style lang="scss">
+.v-card__text {
+    height: 100%;
+}
 iframe {
     width: 100%;
-    height: 600px!important;
+    height: 100%!important;
 }
 </style>

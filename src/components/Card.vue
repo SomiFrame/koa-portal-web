@@ -1,27 +1,29 @@
 <template>
-    <div class="md-layout md-gutter md-alignment-center">
-        <div v-for="(item,index) in list" :key="index" class="md-layout-item md-large-size-25 md-medium-size-33 md-small-size-50 md-xsmall-size-100">
-            <md-card md-with-hover>
-                <md-ripple>
-                        <md-card md-ratio="16:9">
-                            <img :src="item.ref_img_path" :alt="item.title">
-                        </md-card>
-
-                        <md-card-area>
-                        <md-card-header>
-                            <span class="md-title">{{item.title}}</span>
-                            <span class="md-subhead">16/9 image</span>
-                        </md-card-header>
-
-                        <md-card-actions>
-                            <md-button @click="play(item)">view</md-button>
-                        </md-card-actions>
-                        </md-card-area>
-                </md-ripple>
-            </md-card>
-        </div>
-    </div>
+    <v-container grid-list-md>
+        <v-layout row wrap>
+            <v-flex v-for="(item,index) in list" :key="index" xs12 lg3 md6>
+                <v-hover>
+                    <v-card :class="`elevation-${hover ? 12 : 2}`" slot-scope="{hover}">
+                        <v-img class="white--text"
+                            height="200px"
+                            :src="item.ref_img_path">
+                        </v-img>
+                        <v-card-title primary-title>
+                            <div>
+                                <div>{{item.title}}</div>
+                                <span class="grey--text"></span><br>
+                            </div>
+                        </v-card-title>
+                        <v-card-actions>
+                            <v-btn @click="play(item)" flat color="orange">Play</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-hover>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
+
 <script>
 export default {
     props:['list'],
@@ -41,28 +43,14 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.md-layout-item {
-    margin: 10px 0;
+.v-card__title{
+    height: 64px;
+    overflow: hidden;
+    display: -webkit-box;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
-
-.md-card {
-    margin: 0!important;
-    img {
-        width: 100%;
-    }
-}
-
-.md-card-header {
-    .md-title{
-        height: 64px;
-        overflow: hidden;
-        display: -webkit-box;
-        white-space: normal;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        word-break: break-all;
-    }
-}
-
 </style>

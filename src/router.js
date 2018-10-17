@@ -11,7 +11,18 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children:[
+          {
+            path: '/',
+            component: ()=>import('./views/Index.vue')
+          },
+        {
+          path: '/play',
+          name: 'play',
+          component: () => import('./views/Play.vue')
+        }
+      ]
     },
     {
       path: '/about',
@@ -21,10 +32,5 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
-    {
-      path: '/play',
-      name: 'play',
-      component: () => import('./views/Play.vue')
-    }
   ]
 })
