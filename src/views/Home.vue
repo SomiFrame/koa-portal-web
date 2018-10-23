@@ -6,15 +6,17 @@
       fixed
       app>
       <v-list dense>
-        <v-list-tile @click="">
+        <v-list-tile @click="home">
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>
+                Home
+              </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="">
+        <v-list-tile @click="contact">
           <v-list-tile-action>
             <v-icon>contact_mail</v-icon>
           </v-list-tile-action>
@@ -24,9 +26,13 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="indigo" dark fixed app>
+    <v-toolbar light fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/">
+          HuangSe-Video
+        </router-link>
+        </v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -38,8 +44,8 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2017</span>
+    <v-footer light app>
+      <span>&copy; 2017</span>
     </v-footer>
   </v-app>
   </div>
@@ -57,6 +63,14 @@ export default {
     }
   },
   created(){
+  },
+  methods:{
+    home(){
+      this.$router.push('/')
+    },
+    contact() {
+      this.$router.push('/contact')
+    }
   }
 
 };

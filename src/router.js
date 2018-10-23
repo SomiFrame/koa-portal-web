@@ -21,6 +21,11 @@ export default new Router({
           path: '/play',
           name: 'play',
           component: () => import('./views/Play.vue')
+        },
+        {
+          path: '/contact',
+          name: 'contact',
+          component: () => import('./views/Contact.vue')
         }
       ]
     },
