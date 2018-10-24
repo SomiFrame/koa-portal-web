@@ -1,7 +1,11 @@
 <template>
     <v-container>
         <Card :list="list"/>
-        <v-pagination
+        <v-progress-linear v-if="loading"
+            indeterminate
+            color="primary"
+        ></v-progress-linear>
+        <v-pagination v-else
             @input="pageChange"
             v-model="page"
             :length="+(total/limit).toFixed(0)"
@@ -12,6 +16,7 @@
 </template>
 <script>
 import Card from "@/components/Card"
+import {mapGetters} from "vuex"
 export default {
     data(){
         return {
@@ -21,10 +26,14 @@ export default {
           list:[]
         }
     },
+    computed:{
+        ...mapGetters(["loading"])
+    },
     components: {
         Card
-   },
+    },
     created() {
+        console.log(this.loading)
         this.getData()
     },
     methods:{

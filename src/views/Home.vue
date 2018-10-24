@@ -13,7 +13,7 @@
           <v-list-tile-content>
             <v-list-tile-title>
                 Home
-              </v-list-tile-title>
+            </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile @click="contact">
@@ -33,6 +33,26 @@
           HuangSe-Video
         </router-link>
         </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-dialog v-model="dialog_search" max-width="500px">
+            <v-btn slot="activator" icon flat>
+              <v-icon>search</v-icon>
+            </v-btn>
+            <v-card>
+              <v-card-text>
+                <v-form @submit.prevent="search">
+                  <v-text-field
+                    v-model="search_content"
+                    label="search"
+                    required
+                    clearable
+                  ></v-text-field>
+                </v-form>
+              </v-card-text>
+            </v-card>
+          </v-dialog>
+        </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -48,11 +68,28 @@
       <span>&copy; 2017</span>
     </v-footer>
   </v-app>
+    <v-dialog
+      v-model="loading"
+      hide-overlay
+      persistent
+      width="300">
+      <v-card color="primary" dark>
+        <v-card-text>
+          Loading ...
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0">
+          </v-progress-linear>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import {mapGetters} from "vuex"
 export default {
   name: "home",
   data: () => {
@@ -60,19 +97,24 @@ export default {
       drawer: false,
       searchVisible: false,
       search_content: "",
-    }
+      dialog_search: false
+    };
   },
-  created(){
+  computed:{
+    ...mapGetters(["loading"])
   },
-  methods:{
-    home(){
-      this.$router.push('/')
+  created() {},
+  methods: {
+    home() {
+      this.$router.push("/");
     },
     contact() {
-      this.$router.push('/contact')
+      this.$router.push("/contact");
+    },
+    search() {
+      console.log(this.search_content);
     }
   }
-
 };
 </script>
 
@@ -84,5 +126,8 @@ export default {
 .search-form {
   width: 100%;
   height: 100%;
+}
+.v-toolbar__items {
+  align-items: center;
 }
 </style>
