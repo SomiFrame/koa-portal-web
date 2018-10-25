@@ -1,22 +1,34 @@
 <template>
-<div class="search-wrapper">
-    <form>
-        <md-autocomplete v-model="content"
-            :md-options="recommends"
-            md-layout="box"
-            md-dense>
-            <label>Search</label>
-        </md-autocomplete>
-    </form>
-</div>
+  <v-dialog v-model="dialog" max-width="500px">
+    <v-btn slot="activator" icon flat>
+      <v-icon>search</v-icon>
+    </v-btn>
+    <v-card>
+      <v-card-text>
+        <v-form @submit.prevent="search">
+          <v-text-field
+            v-model="search_content"
+            label="search"
+            required
+            clearable
+          ></v-text-field>
+        </v-form>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 </template>
 <script>
 export default {
   data() {
     return {
-        content:'',
-        recommends: []
+        dialog: false,
+        search_content: ''
     };
+  },
+  methods: {
+    search() {
+      console.log(this.search_content);
+    }
   }
 };
 </script>

@@ -26,6 +26,11 @@ export default new Router({
           path: '/contact',
           name: 'contact',
           component: () => import('./views/Contact.vue')
+        },
+        {
+            path: '/category/:category',
+          name: 'category',
+          component: () => import('./views/Category.vue')
         }
       ]
     },

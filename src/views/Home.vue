@@ -35,26 +35,8 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-dialog v-model="dialog_search" max-width="500px">
-            <v-btn slot="activator" icon flat>
-              <v-icon>search</v-icon>
-            </v-btn>
-            <v-card>
-              <v-card-text>
-                <v-form @submit.prevent="search">
-                  <v-text-field
-                    v-model="search_content"
-                    label="search"
-                    required
-                    clearable
-                  ></v-text-field>
-                </v-form>
-              </v-card-text>
-            </v-card>
-          </v-dialog>
-          <v-btn>
-            <v-icon></v-icon>
-          </v-btn>
+          <Search />
+          <Category />
         </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -63,7 +45,7 @@
           justify-start
           align-center
         >
-        <router-view />
+        <router-view :key="$route.fullPath"/>
         </v-layout>
       </v-container>
     </v-content>
@@ -87,12 +69,14 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-  </div>
+</div>
 </template>
 
 <script>
 // @ is an alias to /src
 import {mapGetters} from "vuex"
+import Category from "@/components/Category"
+import Search from "@/components/Search"
 export default {
   name: "home",
   data: () => {
@@ -100,7 +84,8 @@ export default {
       drawer: false,
       searchVisible: false,
       search_content: "",
-      dialog_search: false
+      dialog_search: false,
+      dialog_category: false
     };
   },
   computed:{
@@ -114,10 +99,10 @@ export default {
     contact() {
       this.$router.push("/contact");
     },
-    search() {
-      console.log(this.search_content);
-    }
-  }
+   },
+   components:{
+    Category,Search
+   }
 };
 </script>
 
