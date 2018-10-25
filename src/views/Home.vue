@@ -52,6 +52,9 @@
               </v-card-text>
             </v-card>
           </v-dialog>
+          <v-btn>
+            <v-icon></v-icon>
+          </v-btn>
         </v-toolbar-items>
     </v-toolbar>
     <v-content>
