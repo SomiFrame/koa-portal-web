@@ -28,9 +28,14 @@ export default new Router({
           component: () => import('./views/Contact.vue')
         },
         {
-            path: '/category/:category',
+          path: '/category/:category',
           name: 'category',
           component: () => import('./views/Category.vue')
+        },
+        {
+          path: '/search/:content',
+          name: 'search',
+          component: () => import('./views/Search.vue')
         }
       ]
     },

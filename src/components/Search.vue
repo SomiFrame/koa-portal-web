@@ -28,6 +28,8 @@ export default {
   methods: {
     search() {
       console.log(this.search_content);
+      this.$router.push(`/search/${this.search_content}`)
+      this.dialog = false
     }
   }
 };
