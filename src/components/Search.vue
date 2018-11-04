@@ -38,10 +38,10 @@ export default {
 .search-wrapper {
     width: 100%;
     height: 100%;
-  form {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
+    form {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
 }
 </style>

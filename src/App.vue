@@ -1,20 +1,21 @@
 <template>
   <div id="app">
     <div class="container">
+        <AlertDialog/>
         <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-    import Header from "@/components/Header.vue"
+    import AlertDialog from "@/components/Alert.vue"
     export default {
         data(){
             return{
             }
         },
         components:{
-            Header
+            AlertDialog
         }
     }
 </script>
@@ -22,15 +23,6 @@
 <style lang="scss">
 @import '~normalize.css/normalize.css';
 @import './assets/sass/main';
-@import '~vue-material/dist/theme/engine';
-
-@include md-register-theme("default", (
-    primary: md-get-palette-color(blue, A200), // The primary color of your application
-    accent: md-get-palette-color(pink, 500) // The accent or secondary color
-));
-
-@import "~vue-material/dist/theme/all"; // Apply the theme
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

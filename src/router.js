@@ -15,6 +15,7 @@ export default new Router({
       children:[
           {
             path: '/',
+            name: 'index',
             component: ()=>import('./views/Index.vue')
           },
         {
